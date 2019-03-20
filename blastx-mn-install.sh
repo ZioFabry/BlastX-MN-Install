@@ -5,7 +5,7 @@ CONFIG_FILE='blastx.conf'
 CONFIGFOLDER='/root/.blastxcore'
 COIN_DAEMON='/usr/local/bin/blastxd'
 COIN_CLI='/usr/local/bin/blastx-cli'
-COIN_REPO='https://github.com/BlastX-Core/BlastX/releases/download/v1.0.0/blastx-v1.0.0-linux.tar.gz'
+COIN_REPO='https://github.com/BlastX-Core/BlastX/releases/download/v1.0.1/blastx-v1.0.1-linux.tar.gz'
 
 COIN_NAME='BlastX'
 COIN_PORT=30009
@@ -257,14 +257,13 @@ fi
 function prepare_system() {
 echo -e "Prepare the system to install ${GREEN}$COIN_NAME${NC} master node."
 echo "Installing dependencies..."
-apt-get -qq update
-apt-get -qq upgrade
-apt-get -qq autoremove
-apt-get -qq install wget htop unzip
-apt-get -qq install build-essential && apt-get -qq install libtool autotools-dev autoconf libevent-pthreads-2.0-5 automake && apt-get -qq install libssl-dev && apt-get -qq install libboost-all-dev && apt-get -qq install software-properties-common && add-apt-repository -y ppa:bitcoin/bitcoin && apt update && apt-get -qq install libdb4.8-dev && apt-get -qq install libdb4.8++-dev && apt-get -qq install libminiupnpc-dev && apt-get -qq install libqt4-dev libprotobuf-dev protobuf-compiler && apt-get -qq install libqrencode-dev && apt-get -qq install git && apt-get -qq install pkg-config && apt-get -qq install libzmq3-dev
-apt-get -qq install aptitude
-apt-get -qq install libevent-dev
-apt-get install -y binutils >/dev/null 2>&1
+apt-get -y -qq install software-properties-common htop unzip wget build-essential git pkg-config aptitude binutils
+add-apt-repository -y ppa:bitcoin/bitcoin 
+apt-get -y -qq update
+apt-get -y -qq upgrade
+apt-get -y -qq autoremove
+apt-get -y -qq install libtool autotools-dev autoconf libevent-pthreads-2.0-5 automake libssl-dev libboost-all-dev libdb4.8-dev libdb4.8++-dev 
+apt-get -y -qq install libminiupnpc-dev libqt4-dev libprotobuf-dev protobuf-compiler libqrencode-dev libzmq3-dev libevent-dev
 }
 
 function important_information() {
